@@ -160,8 +160,8 @@ var Engine = (function(global) {
         'images/Rock.png',
         'images/enemy-bug.png',
         'images/char-boy.png', 
-        'images/Star.png',     
-        'images/Key.png']
+        'images/Star.png'     
+        ]
     );
     Resources.onReady(init);
 
