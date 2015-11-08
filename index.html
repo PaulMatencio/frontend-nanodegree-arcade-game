@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Effective JavaScript: Frogger</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <link href="css/style.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <title>Bug invasion</title>
 </head>
 <body>
-    <script src="js/resources.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
+  <header class="row">
+  	<h1 class="col-12"> Bug invasion </h1>
+  </header>	
+  <main class= "row">
+     <menu class="col-12 menu">
+      <p id="scoring"> </p>
+     </menu> 
+     <canvas id="canvas" class="canvas" width="505" height="707"> </canvas>  
+  </main>
+  <footer> </footer>
+  <script src="js/resources.js"></script>
+  <script src="js/entities.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/engine.js"></script>
 </body>
 </html>

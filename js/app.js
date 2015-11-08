@@ -1,39 +1,114 @@
-// Enemies our player must avoid
-var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
-};
+function build_playground(playground) {
+    /* Loop through the number of rows and columns of the playground defined in entities.js
+    * and, using the rowImages array, draw the correct image for that
+    * portion of the "grid"
+    */
+    for (row = 0; row < playground.numRows; row++) {
+        for (col = 0; col < playground.numCols; col++) {
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-};
+            /* The drawImage function of the canvas' context element
+            * requires 3 parameters: the image to draw, the x coordinate
+            * to start drawing and the y coordinate to start drawing.
+            * We're using our Resources helpers to refer to our images
+            * so that we get the benefits of caching these images, since
+            * we're using them over and over.
+            */
+            
+           var image_url = images[playground.layout[row * playground.numCols + col]];
+           ctx.drawImage(Resources.get(image_url), col * playground.square.pixelWidth, row * playground.square.pixelHeight);
+        }
+    }
+}
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+function draw(element){                                      //Draw the elements on canvas placing them of the middle of tiles
+    
+    var x = Resources.square.pixelWidth;                       //also calculate the offset if the element is scaled.
+        y = Resources.square.pixelHeight;
+        p = [element.position[0],element.position[1]];
+        s = element.scale;
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+    function offset(element, scale) {
+        if (scale !== 1) {
+            return ((element - element * scale) / 2) * s;   //
+        } else {
+            return 0;
+        }
+    };
+
+    ctx.scale(element.scale, element.scale);
+    ctx.drawImage(Resources.get(element.sprite), p[0] * x / s + offset(x, s) , p[1] * y / s - y / 3  + 2 * offset(y, s));
+    ctx.scale(1/element.scale, 1/element.scale);
+}
 
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
+function scoring() {
+    var string1 = "Score : %data";
+    var string2 = "Level : %data";
+    var string3 = "Level_score: %data";
+    var string4 = "Lifes: %data";
+    document.querySelector("#scoring").innerHTML = string1.replace("%data",game.player.score.toString())+"   -   " +
+    string2.replace("%data",game.level.toString()) + "   -   " +
+    string3.replace("%data",game.level_score.toString()) + "   -   " +
+    string4.replace("%data",game.player.lives.toString()) ;
+}
 
+var images = {}                                       // images Object  (or hashmap)
+images['s']      = 'images/stone-block.png';          
+images['w']      = 'images/water-block.png';
+images["g"]      = 'images/grass-block.png';
+images["r"]      = 'images/Rock.png';
+images["k"]      = 'images/Star.png';
+images["player"] = 'images/char-boy.png' ;
+images["bug"]    = 'images/enemy-bug.png' ;
+
+var playLayouts = [                           // Playout Arrays. Each Array element is an array              
+    ['w', 'w', 'w', 'k', 'w',                 //  Level 1   playground layout
+     's', 's', 's', 's', 's',                 // w : water   
+     's', 's', 's', 's', 's',                 // g : grass    
+     's', 's', 's', 's', 's',                 // s : stone 
+     's', 's', 's', 's', 's',
+     'g', 'g', 'g', 'g', 'g',                    
+     'g', 'g', 'g', 'g', 'g'],
+
+     ['w', 'k', 'w', 'w', 'w',                  // Level 2  playround layout
+      's', 's', 'r', 's', 's',
+      's', 's', 's', 's', 's',
+      's', 'r', 's', 's', 's',
+      's', 's', 's', 's', 's',
+      'g', 'g', 'g', 'g', 'g',
+      'g', 'g', 'g', 'g', 'g'],
+
+     ['w', 'k', 'w', 'w', 'w',                  // Level 3 playground layout
+      's', 's', 'r', 's', 's',
+      's', 's', 's', 's', 's',
+      's', 'r', 's', 's', 's',
+      's', 's', 's', 's', 's',
+      's', 's', 's', 's', 'r',
+      'g', 'g', 'g', 'g', 'g',
+      'g', 'g', 'g', 'g', 'g']
+     ] ;
+
+var allPlaygrounds  = [];
+var Score_level1 = 300;                           // Level total score 
+var levelScore = [];
+// two levels
+for (var i = 0, len =  playLayouts.length; i < len; i++) {
+    var playground = new Playground(playLayouts[i], Math.floor(Resources.canvas.width/101));     //this for loop creates enemies and fill up the allEnemies Object.
+    this.allPlaygrounds.push(playground);
+    this.levelScore.push(Score_level1*(i+1)); // level 1 playgound= 300, level 2 playground= 600 , level 3 playground = 900
+    
+}
+
+game = new Game();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
+
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
@@ -41,6 +116,7 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
-    player.handleInput(allowedKeys[e.keyCode]);
+    game.player.handleInput(allowedKeys[e.keyCode]);
 });
+
+

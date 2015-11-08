@@ -99,13 +99,23 @@
         readyCallbacks.push(func);
     }
 
+    /* define the Pixel of the Tile */
+    function Square(width,height){
+        this.pixelWidth  = width;
+        this.pixelHeight = height;
+    }
+
     /* This object defines the publicly accessible functions available to
      * developers by creating a global Resources object.
      */
     window.Resources = {
         load: load,
         get: get,
+        square: new Square(101,83),
+        canvas : {"width":505,"height":707},
         onReady: onReady,
         isReady: isReady
     };
 })();
+
+

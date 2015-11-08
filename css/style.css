@@ -1,3 +1,42 @@
-body {
-    text-align: center;
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    flex-wrap: wrap;
 }
+
+
+body {
+    text-align: center;  
+    width: 100%;
+    height: 100%;
+    font-family: 'Lobster';
+}
+
+.row {
+	width: 100%;
+	display: flex;
+    flex-wrap: wrap;
+}
+.canvas {
+	width: 505px ;
+	margin-left: calc((100% - 505px)/2) ;
+	margin-right: calc((100% - 505px)/2) ;
+
+}
+.col-12 {
+	width: 100%;
+}
+.menu {
+	margin: 0;
+}
+
+#scoring {
+	text-align:center;
+	font-size: 26px;
+	font-style: italic;
+	margin: 1vh 5vw 1vh 0;
+}
+
+
