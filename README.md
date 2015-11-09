@@ -20,7 +20,7 @@ Player:
 
 Bugs:
 
--The number of bugs = number of freelanes + game lavel (1,2 or 3)
+-The number of bugs = 5  +  game level
 -The bugs will initailly be placed one per each lane. When all free lanes are occupied, the next selected free lane will start with the first lane.
 -The bugs run on freelanes and their speed will depend on the number of free lanes.
 -When a bug goes beyond its primary lane, it will goes to the next lane.
@@ -31,7 +31,7 @@ Bugs:
 
 Not yet implemented :
 
-- The paayer  can select an sprite to represent the Actor ( list of sprites)
+- The player  can select an sprite to represent the Actor ( list of sprites)
 
 
 
