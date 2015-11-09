@@ -66,7 +66,7 @@ Player.prototype.update = function() {
         }
     } else {
         if (game.playground.layout[layout_index] === "k") {     // win 150 scores if new position is a "k"
-            this.score += 300 ;
+            this.score += 150 ;
         }  else this.score += 50;                               // else win 50 scores ( water)
 
         if (this.score < game.level_score){                     // reset the player to its original position
@@ -147,7 +147,7 @@ Playground.prototype.freePlace = function(playground) {      	//Checking for pos
 
 function Game() {                                //   Game Class constructor.
     this.level       = 1;                        //   start with level 1
-    this.enemies     = 5 ;                       //   Level, number of enemies
+    this.enemies     = 5 ;                       //   Level, number of enemies ( freelane)
     this.playground  = [];                       //    multi level playgrond
     this.level_score = levelScore[this.level-1]  //    must score to change level
     this.freeLanes   = 0;                        //    number of free Lanes for enemies
