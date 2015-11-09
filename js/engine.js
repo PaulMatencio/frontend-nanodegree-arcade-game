@@ -25,15 +25,15 @@ var Engine = (function(global) {
         lastTime;
 
     var canvas = document.getElementById("canvas");
-    console.log(canvas);
-     
+    // console.log(canvas);
+
     if (!canvas)  {
         canvas = doc.createElement('canvas');
         canvas.width  = Resources.canvas.width;
         canvas.height = Resources.canvas.height;
         doc.body.appendChild(canvas);
     }
-     
+
     ctx = canvas.getContext('2d');
 
     /* This function serves as the kickoff point for the game loop itself
@@ -73,7 +73,7 @@ var Engine = (function(global) {
     function init() {
         lastTime = Date.now();
         game.newLevel();
-        reset();         
+        reset();
         main();
     }
 
@@ -129,7 +129,7 @@ var Engine = (function(global) {
          * the render function you have defined.
          */
         ctx.clearRect(0, 0, canvas.width, canvas.height); // empty the Canvas
-        // scoreScreen.render(); 
+        // scoreScreen.render();
         scoring();
 
         build_playground(game.playground,Resources.square); // drwa the playground
@@ -159,8 +159,8 @@ var Engine = (function(global) {
         'images/grass-block.png',
         'images/Rock.png',
         'images/enemy-bug.png',
-        'images/char-boy.png', 
-        'images/Star.png'     
+        'images/char-boy.png',
+        'images/Star.png'
         ]
     );
     Resources.onReady(init);
