@@ -7,16 +7,16 @@ Use arrows to move the player(boy) around grass and stone tiles.
 
 Goal:
 
-The goal is to reach the water or the star on the other side of the playground without hitting the bugs. The player has 3 lives before the game restart and load the  first level. The game has three level. When the third level is completed, the player win and the game is reloaded
+The goal is to reach the water or the Key or the Star on the other side of the playground without hitting the bugs. The player has 3 lives before the game restart and load the  first level. The game has three level. When the third level is completed, the player win and the game is reloaded
 
 Player:
 
--When the player reachs the water at the other side, the player will collect 50 points. If the player reach the starm, he gets 150 points.
+-When the player reachs the water at the other side, the player will collect 50 points when he reaches the water. He will collect 150 poinst if he gets the key and 100 points if he gets a Star. The Star will appear only at the third level.
 -When the player is  hit by a bug, he loses 100 points and one life.
 -When the player gets 300 points, he gets the next level ( i.e level+1)
 -Rocks replace some stones when with game level 2 and 3.
 -The rock is an obtacle for the player. He can't cross it.
--When the player win (got 900 points), the game is reloaded
+-When the player get 900 points, he win a princess and the game is reloaded
 
 Bugs:
 
@@ -32,7 +32,7 @@ Bugs:
 Not yet implemented :
 
 - The player  can select an sprite to represent the Actor ( list of sprites)
-
+- Win a princess
 
 
 I have been inspired for this project by:
