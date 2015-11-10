@@ -49,12 +49,12 @@ function getRandomInt(min, max) {
 function scoring() {
     var string1 = "My score : %data";
     var string2 = "Game level : %data";
-    var string3 = "Score level: %data";
+    var string3 = "Level score: %data";
     var string4 = "My lifes: %data";
-    document.querySelector("#scoring").innerHTML = string1.replace("%data",game.player.score.toString())+ "---" +
-    string2.replace("%data",game.level.toString()) + "---" +
-    string3.replace("%data",game.level_score.toString()) + "---" +
-    string4.replace("%data",game.player.lives.toString()) ;
+    document.querySelector("#scoring").innerHTML = string1.replace("%data",game.player.score.toString())+ "   " +
+    string4.replace("%data",game.player.lives.toString()) + "   " +
+    string2.replace("%data",game.level.toString()) + "   " +
+    string3.replace("%data",game.level_score.toString()) ;
 }
 
 var images = {}                                       // images Object  (or hashmap)
@@ -66,6 +66,7 @@ images["S"]      = 'images/Star.png';
 images["k"]      = 'images/Key.png';
 images["player"] = 'images/char-boy.png' ;
 images["bug"]    = 'images/enemy-bug.png' ;
+images["princess"]      = 'images/char-princess-girl.png';
 
 var playLayouts = [                           // Playout Arrays. Each Array element is an array
     ['w', 'w', 'w', 'k', 'w',                 //  Level 1   playground layout
@@ -97,7 +98,8 @@ var playLayouts = [                           // Playout Arrays. Each Array elem
 var allPlaygrounds  = [];
 var Score_level1 = 300;                           // Level total score
 var levelScore = [];
-// two levels
+
+// three levels
 for (var i = 0, len =  playLayouts.length; i < len; i++) {
     var playground = new Playground(playLayouts[i], Math.floor(Resources.canvas.width/101));     //this for loop creates enemies and fill up the allEnemies Object.
     this.allPlaygrounds.push(playground);

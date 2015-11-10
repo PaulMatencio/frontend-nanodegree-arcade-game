@@ -9,8 +9,8 @@ function Element(sprite) { // Elemnet class is the superclass of the of  Enemy a
     this.exist = true; //   existence
     this.scale = 1; //   scale
 };
-Element.prototype.render = function() { //render method for elemnst  if they are exists
-    if (this.exist === true) { //calls the draw function which places the actor
+Element.prototype.render = function() { //render method for elemnst  if they exist
+    if (this.exist === true) { //calls the draw function which places the element
         draw(this);
     } //on the canvas, positioned in the middle of
 }; //square and deals width scaled actors.
@@ -21,7 +21,7 @@ function Enemy(sprite) { //Enemy constructor function. Inherit basic
     Element.call(this, sprite); //properties from Element  and create a random speed
     this.scale = 0.8;
     var freelane = game.freeLanes.length;
-    this.speed = (Math.floor(Math.random() * 8 * freelane) + freelane + 1) / 20;
+    this.speed = (Math.floor(Math.random() * 8 * freelane) + freelane + 1) / 15;
 }
 
 Enemy.prototype.update = function update(dt) { //moves enemy across the playground and re-spawns it
@@ -43,6 +43,7 @@ function Player(sprite) { // Player constructor. Inherit basic
     this.scale = 0.9;
     this.lives = 3;
     this.score = 0;
+    this.win = false;
     this.step = [0, 0];
 }
 /*
@@ -95,11 +96,12 @@ Player.prototype.Reset = function() {
         this.reset(game.playground);
     } else {
         game.level++; // if the score reach the level_score, the player goes to the next level
-        if (game.level < playLayouts.length + 1) {
+        if (game.level <= playLayouts.length ) {
             game.newLevel();
         } else {
-            game.level = 1;
-            location.reload();
+            game.player.win = true;  // tell the engine to stop updating the canvas
+            game.playground = playLayouts[playLayouts.length -1];
+            game.princess.reset();
         }
     }
 }
@@ -151,14 +153,28 @@ Player.prototype.reset = function(playground) { //reset player start position af
     this.position = [Math.floor(playground.numCols / 2), playground.numRows - 1];
 };
 
+
+
+inherit(Princess, Element); // subclassing Element class
+
+function Princess(sprite) { // Player constructor. Inherit basic
+    Element.call(this, sprite); //properties and adds lives, score and step
+    this.scale = 0.9;
+    this.position = [0, 0];
+}
+Princess.prototype.reset = function(playground) { //reset princess start position after collision
+    this.position = [0, 0];
+};
+
+
 // Playground classes
 
 function Playground(layout, col) { //Constructor function of playground
 
-    this.layout = layout; //Need 3 arguments: layout(Array that hold the representation of the playground)
+    this.layout  = layout; //Need 3 arguments: layout(Array that hold the representation of the playground)
     this.numCols = col; //col: number of column on the playground
     this.numRows = this.layout.length / col;
-    this.square = Resources.square;
+    this.square  = Resources.square;
     this.startPosition = [Math.floor(col / 2), this.numRows - 1];
 };
 
@@ -182,7 +198,7 @@ Playground.prototype.freeLane = function(playground) { //Checking for rows on th
     return freeLanes;
 };
 
-Playground.prototype.freePlace = function(playground) { //Checking for position of the stone tiles
+Playground.prototype.freePlace = function(playground) { //Checking for free position  of the stone squares
     var squares = []; //where the collectables can spawn.
     for (var row = 0; row < playground.numRows; row++) {
         for (var col = 0; col < playground.numCols; col++) {
@@ -203,6 +219,7 @@ function Game() { //   Game Class constructor.
     this.level_score = levelScore[this.level - 1] //    must score to change level
     this.freeLanes = 0; //    number of free Lanes for enemies
     this.player = new Player(images["player"]);
+    this.princess = new Princess(images["princess"]);
 };
 
 Game.prototype.newLevel = function() { //This function holds the logic of the game and create enemies
@@ -210,7 +227,7 @@ Game.prototype.newLevel = function() { //This function holds the logic of the ga
     this.level_score = levelScore[this.level - 1]; // Score of this level
     this.freeLanes = this.playground.freeLane(this.playground); //holds the lanes built up only from stones.
     this.allEnemies = [];
-    var enemies = this.enemies + this.level;
+    var enemies = this.enemies + this.level;    
     for (var i = 0, len = enemies; i < len; i++) {
         var enemy = new Enemy(images["bug"]); //this for loop creates enemies and fill up the allEnemies Object.
         this.allEnemies.push(enemy);

@@ -16,7 +16,7 @@ Player:
 -When the player gets 300 points, he gets the next level ( i.e level+1)
 -Rocks replace some stones when with game level 2 and 3.
 -The rock is an obtacle for the player. He can't cross it.
--When the player get 900 points, he win a princess and the game is reloaded
+-When the player get 900 points, the key will be transformed into a princess
 
 Bugs:
 
@@ -32,7 +32,10 @@ Bugs:
 Not yet implemented :
 
 - The player  can select an sprite to represent the Actor ( list of sprites)
-- Win a princess
+
+Bug 
+
+- When the player win, the princess should be displayed  at the position of the key
 
 
 I have been inspired for this project by:

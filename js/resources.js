@@ -112,7 +112,7 @@
         load: load,
         get: get,
         square: new Square(101,83),
-        canvas : {"width":505,"height":707},
+        canvas: {"width":505,"height":707},
         onReady: onReady,
         isReady: isReady
     };

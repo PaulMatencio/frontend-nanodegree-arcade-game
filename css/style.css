@@ -34,6 +34,7 @@ body {
 
 #scoring {
 	text-align:center;
+	white-space: pre;
 	font-size: 26px;
 	font-style: italic;
 	margin: 1vh 5vw 1vh 0;

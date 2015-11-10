@@ -23,10 +23,7 @@ var Engine = (function(global) {
         win = global.window,
         //canvas = doc.createElement('canvas'),
         lastTime;
-
-    var canvas = document.getElementById("canvas");
-    // console.log(canvas);
-
+    var canvas = document.querySelector("#canvas");
     if (!canvas)  {
         canvas = doc.createElement('canvas');
         canvas.width  = Resources.canvas.width;
@@ -87,10 +84,10 @@ var Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function update(dt) {
-        updateEntities(dt);             // drawing are implemented by each entity render methods (renderEntities)
-        game.eventHandler(dt);          // collision detection is implemented inside the eventHandler
-        reset();
-        }
+            updateEntities(dt);             // drawing are implemented by each entity render methods (renderEntities)
+            game.eventHandler(dt);          // collision detection is implemented inside the eventHandler
+            reset();
+    }
 
     /* This is called by the update function  and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
@@ -134,10 +131,17 @@ var Engine = (function(global) {
 
         build_playground(game.playground,Resources.square); // drwa the playground
         // game.key.render();
-        game.allEnemies.forEach(function(enemy) {         // draw the enemies
-            enemy.render();
-        });
-        game.player.render();                             // draw the player
+        if (!game.player.win) {
+            game.allEnemies.forEach(function(enemy) {         // draw the enemies
+                enemy.render();
+             });
+            game.player.render();   
+         }
+        else {
+            game.princess.render() ;
+        }     
+                                // draw the player
+        
     }
 
     /* This function does nothing but it could have been a good place to
