@@ -40,68 +40,26 @@ inherit(Player, Element); // subclassing Element class
 
 function Player(sprite) { // Player constructor. Inherit basic
     Element.call(this, sprite); //properties and adds lives, score and step
-    this.scale = 0.9;
+    this.scale = 0.9; // scale the player sprote
     this.lives = 3;
     this.score = 0;
-    this.win = false;
+    this.win = false; // is set to true when the player finish the game level 3
     this.step = [0, 0];
 }
-/*
-    Implementation of the Basic Functionality
-
-In this game you have a Player and Enemies (Bugs). The goal of the player is to reach the water, without colliding into any one of the enemies.
-The player can move left, right, up and down. The enemies move in varying speeds on the paved block portion of the scene.
-Once a the player collides with an enemy, the game is reset and the player moves back to the start square. Once the player reaches the water the game is won.
-*/
-
-/*
-Player.prototype.update = function() {
-    var newPos = [this.position[0] + this.step[0], this.position[1] + this.step[1]];                     //update player position after checking the boundaries
-    var layout_index = newPos[1] * game.playground.numCols + newPos[0];
-    var pos = game.playground.layout[layout_index] ;
-    if (pos !== "w" && pos !== "k" && pos !== "S") { //checking for  water or star position ) => win
-        if (pos !== "r")  {                // checking for rock position , player can't cross over
-          if (newPos[0] >= 0 && newPos[0] < game.playground.numCols) {      //checking for playground boundaries (left-right)
-               this.position[0] = newPos[0];
-          }
-          if (newPos[1] >= 0 && newPos[1] < game.playground.numRows) {      //checking for playground boundaries (top-bottom)
-            this.position[1] = newPos[1];
-          }
-        }
-    } else {
-
-        if (pos === "k") {              // win 150 scores if new position is a "k"
-            this.score += 150 ;
-        }  else this.score += 50;                               // else win 50 scores ( water)
-
-        if (this.score < game.level_score){                     // reset the player to its original position
-           this.reset(game.playground) ;
-        } else {
-          game.level++ ;                                        // if the score reach the level_score, the player goes to the next level
-          if (game.level < playLayouts.length+1)  {
-            game.newLevel();
-          } else {
-            game.level = 1;
-            location.reload();
-          }
-        }
-      }
-    this.step = [0, 0];
-};
-
-*/
 
 Player.prototype.Reset = function() {
     if (this.score < game.level_score) { // reset the player to its original position
         this.reset(game.playground);
     } else {
-        game.level++; // if the score reach the level_score, the player goes to the next level
-        if (game.level <= playLayouts.length ) {
-            game.newLevel();
+        if (game.level <= playLayouts.length - 1) {
+            game.level++; // if the score is higher or equal to the level_score, the player goes to the next level
+            game.newLevel(); // next level
         } else {
-            game.player.win = true;  // tell the engine to stop updating the canvas
-            game.playground = playLayouts[playLayouts.length -1];
-            game.princess.reset();
+            // the player has sucessfully completed all the game levels
+            game.player.win = true; // tell the engine to stop updating the canvas
+            game.playground.layout = playLayouts[playLayouts.length - 1];
+
+            //  console.log(game.playground, game.princess.position);
         }
     }
 }
@@ -109,21 +67,22 @@ Player.prototype.Reset = function() {
 Player.prototype.update = function() {
     var newPos = [this.position[0] + this.step[0], this.position[1] + this.step[1]]; //update player position after checking the boundaries
     var layout_index = newPos[1] * game.playground.numCols + newPos[0];
+    // console.log(newPos,layout_index) ;
     var pos = game.playground.layout[layout_index];
     switch (pos) {
-        case "w":             // water
+        case "w": // water
             this.score += 50;
             this.Reset();
             break;
-        case "k":              // Key
+        case "k": // Key
             this.score += 150;
             this.Reset();
             break;
-        case "S":              // Star
+        case "S": // Star
             this.score += 100;
-            this.Reset() ;
+            this.Reset();
             break;
-        case "r":    // no change since the boy can't cross rock
+        case "r": // no change since the boy can't cross rock
             break;
         default:
             if (newPos[0] >= 0 && newPos[0] < game.playground.numCols) { //checking for playground boundaries (left-right)
@@ -171,10 +130,10 @@ Princess.prototype.reset = function(playground) { //reset princess start positio
 
 function Playground(layout, col) { //Constructor function of playground
 
-    this.layout  = layout; //Need 3 arguments: layout(Array that hold the representation of the playground)
+    this.layout = layout; //Need 3 arguments: layout(Array that hold the representation of the playground)
     this.numCols = col; //col: number of column on the playground
     this.numRows = this.layout.length / col;
-    this.square  = Resources.square;
+    this.square = Resources.square;
     this.startPosition = [Math.floor(col / 2), this.numRows - 1];
 };
 
@@ -227,7 +186,7 @@ Game.prototype.newLevel = function() { //This function holds the logic of the ga
     this.level_score = levelScore[this.level - 1]; // Score of this level
     this.freeLanes = this.playground.freeLane(this.playground); //holds the lanes built up only from stones.
     this.allEnemies = [];
-    var enemies = this.enemies + this.level;    
+    var enemies = this.enemies + this.level;
     for (var i = 0, len = enemies; i < len; i++) {
         var enemy = new Enemy(images["bug"]); //this for loop creates enemies and fill up the allEnemies Object.
         this.allEnemies.push(enemy);

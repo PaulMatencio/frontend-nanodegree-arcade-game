@@ -7,18 +7,26 @@ Use arrows to move the player(boy) around grass and stone tiles.
 
 Goal:
 
-The goal is to reach the water or the Key or the Star on the other side of the playground without hitting the bugs. The player has 3 lives before the game restart and load the  first level. The game has three level. When the third level is completed, the player win and the game is reloaded
+The goal is to reach the water or the Key or a Star on the other side of the playground without hitting the bugs. The game has three level. Stars will appear after the  level 2. The player has 3 lives before the game restart and load the  first level.
+The player wins when he completed the level 3 : bugs will disappear and princess will appear over the key. The player is left where he is. The objective for the player is to be as close as possible to the princess. When all bugs are gone, the player can move closer to the princess.
 
 Player:
 
--When the player reachs the water at the other side, the player will collect 50 points when he reaches the water. He will collect 150 poinst if he gets the key and 100 points if he gets a Star. The Star will appear only at the third level.
--When the player is  hit by a bug, he loses 100 points and one life.
--When the player gets 300 points, he gets the next level ( i.e level+1)
--Rocks replace some stones when with game level 2 and 3.
--The rock is an obtacle for the player. He can't cross it.
--When the player get 900 points, the key will be transformed into a princess
+-If the player reachs the water at the other side, he will collect 50 point. He can collect 150 poinst if he reaches the key and 100 points if he reaches a Star.
+It should be noted that Star(s) will appear only at the third level.
+-When the player is  hit by a bug (collision), he loses 100 points and one life.
+-When the player gets 300 points, he goes to the next level of the game( i.e level+1)
+-A few Rocks will replace stones at level 2 and 3.
+-Rocks are obtacle for the player. Player can't cross rock.
 
-Bugs:
+WIN:
+-When a player gets 900 points, he wins the game then
+
+	1) A princess will be placed over the key and the player where he was left. The objective of the player is to be as close as possible to the princess.
+	2) All the bugs are gone
+
+
+BUGS
 
 -The number of bugs = 5  +  game level
 -The bugs will initailly be placed one per each lane. When all free lanes are occupied, the next selected free lane will start with the first lane.
@@ -31,12 +39,8 @@ Bugs:
 
 Not yet implemented :
 
-- The player  can select an sprite to represent the Actor ( list of sprites)
-
-Bug 
-
-- When the player win, the princess should be displayed  at the position of the key
+- The player can select the speed of the bugs ( very slow, slow, medium, fast and very fast)
 
 
-I have been inspired for this project by:
+For this project, I was inspired by:
 http://devrob.github.io/Udacity-WebDev-project3

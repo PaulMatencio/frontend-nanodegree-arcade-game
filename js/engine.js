@@ -13,7 +13,6 @@
  * the canvas' context (ctx) object globally available to make writing app.js
  * a little simpler to work with.
  */
-
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -24,9 +23,9 @@ var Engine = (function(global) {
         //canvas = doc.createElement('canvas'),
         lastTime;
     var canvas = document.querySelector("#canvas");
-    if (!canvas)  {
+    if (!canvas) {
         canvas = doc.createElement('canvas');
-        canvas.width  = Resources.canvas.width;
+        canvas.width = Resources.canvas.width;
         canvas.height = Resources.canvas.height;
         doc.body.appendChild(canvas);
     }
@@ -84,9 +83,9 @@ var Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function update(dt) {
-            updateEntities(dt);             // drawing are implemented by each entity render methods (renderEntities)
-            game.eventHandler(dt);          // collision detection is implemented inside the eventHandler
-            reset();
+        updateEntities(dt); // drawing are implemented by each entity render methods (renderEntities)
+        game.eventHandler(dt); // collision detection is implemented inside the eventHandler
+        reset();
     }
 
     /* This is called by the update function  and loops through all of the
@@ -97,8 +96,8 @@ var Engine = (function(global) {
      * render methods.
      */
     function updateEntities(dt) {
-        game.player.update(dt,this.playground);
 
+        game.player.update(dt, this.playground);
         game.allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
@@ -126,22 +125,18 @@ var Engine = (function(global) {
          * the render function you have defined.
          */
         ctx.clearRect(0, 0, canvas.width, canvas.height); // empty the Canvas
-        // scoreScreen.render();
         scoring();
-
-        build_playground(game.playground,Resources.square); // drwa the playground
+        build_playground(game.playground, Resources.square); // draw the playground
         // game.key.render();
+        game.player.render();
         if (!game.player.win) {
-            game.allEnemies.forEach(function(enemy) {         // draw the enemies
+            game.allEnemies.forEach(function(enemy) { // draw the enemies
                 enemy.render();
-             });
-            game.player.render();   
-         }
-        else {
-            game.princess.render() ;
-        }     
-                                // draw the player
-        
+            });
+            // game.player.render();
+        } else {
+            game.princess.render();
+        }
     }
 
     /* This function does nothing but it could have been a good place to
@@ -149,8 +144,8 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        canvas.height  =  101 * game.playground.numRows;     //resize canvas.
-        canvas.width   =  101 * game.playground.numCols;
+        canvas.height = 101 * game.playground.numRows; //resize canvas.
+        canvas.width = 101 * game.playground.numCols;
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -159,14 +154,14 @@ var Engine = (function(global) {
      */
     Resources.load(
         ['images/stone-block.png',
-        'images/water-block.png',
-        'images/grass-block.png',
-        'images/Rock.png',
-        'images/enemy-bug.png',
-        'images/char-boy.png',
-        'images/Star.png',
-        'images/Key.png',
-        'images/char-princess-girl.png',
+            'images/water-block.png',
+            'images/grass-block.png',
+            'images/Rock.png',
+            'images/enemy-bug.png',
+            'images/char-boy.png',
+            'images/Star.png',
+            'images/Key.png',
+            'images/char-princess-girl.png',
         ]
     );
     Resources.onReady(init);
