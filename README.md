@@ -41,8 +41,7 @@ BUGS
 
 CURRENT ISSUES
 
-When the player use the arrow keys to move, the select element is also changed which of course change the speed of the bugs. Need to find a solution to discouple the select element from the arrows key
-
+When the player use the arrow keys to move, the (select) element is also changed which then changes the speed of the bugs. Due to this (select) and (arrow keys) behaviour, in order to change the speed of the bugs, the player must first select the speed using the Select element  the click on the change speed button.
 
 
 For this project, I was inspired by:

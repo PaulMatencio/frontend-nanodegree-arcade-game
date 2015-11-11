@@ -63,7 +63,7 @@ function getSpeedValue() {
 
 /*
 function change() {
-    var freelane = game.freeLanes.length; 
+    var freelane = game.freeLanes.length;
     game.allEnemies.forEach(
         function(enemy) {
         if (enemy.exist) {
@@ -71,7 +71,7 @@ function change() {
             Resources.speed = getSpeedValue();
             enemy.changeSpeed(Resources.speed);
         }
-    },game);   
+    },game);
 }
 */
 
@@ -144,8 +144,9 @@ document.addEventListener('keyup', function(e) {
     game.player.handleInput(allowedKeys[e.keyCode]);
 });
 
+/*
 document.querySelector("#speed").onchange = function() {
-    var freelane = game.freeLanes.length; 
+    var freelane = game.freeLanes.length;
     game.allEnemies.forEach(
         function(enemy) {
         if (enemy.exist) {
@@ -153,7 +154,20 @@ document.querySelector("#speed").onchange = function() {
             // this.options[this.selectedIndex].value;
             enemy.changeSpeed(Resources.speed);
         }
-    },game);  
+    },game);
 }
+*/
+document.querySelector("#change").onclick = function() {
+    var freelane = game.freeLanes.length;
+    game.allEnemies.forEach(
+        function(enemy) {
+        if (enemy.exist) {
+            Resources.speed = getSpeedValue();
+            // this.options[this.selectedIndex].value;
+            enemy.changeSpeed(Resources.speed);
+        }
+    },game);
+}
+
 
 

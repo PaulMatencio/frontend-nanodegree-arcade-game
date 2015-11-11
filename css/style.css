@@ -59,7 +59,7 @@ body {
 	white-space: pre;
 	font-size: 26px;
 	font-style: italic;
-	margin: 1vh 0  1vh 0;
+	margin: 2vh 0  1vh 0;
 }
 
 .left {
@@ -67,25 +67,53 @@ body {
 }
 
 .p1 {
-	font-size: 30px;
+	font-size: 50px;
 	font-weight: 300;
-	margin-top: 20px;
-	margin-left: 25%;
+	margin-top: 15px;
+	margin-left: 20%;
+	margin-right: 5%;
 	width: 25%;
+	color: #a1a1a1;
 }
 
 .select {
-	height: 35px;
+	height: 25px;
 	font-size: 26px;
-	width: 30%;
+	width: 23%;
 	float: left;
 	margin-top: 20px;
-	margin-right: 20%;
+	color: #a1a1a1;
 }
 
 #speed {
 	font-size: 20px;
 	border: 2px solid;
-	border-radius: 20px;
+	border-radius: 10px;
+	font-family: 'Lobster';
 	overflow: hidden;
+	color: black;
+}
+
+#change {
+	font-size: 18px;
+	font-family: 'Lobster';
+	border: 2px solid;
+	border-radius: 10px;
+	height: 25px;
+	margin-top : 5px;
+	float: right;
+	background-color: #a1a1a1 ;
+	box-shadow: 10px 10px 5px #888888;
+	width: 12% ;
+
+}
+
+@media ( max-width: 750px) {
+	#scoring {
+		margin-top : 5vh;
+	}
+	#change {
+		margin-top : 2px;
+	}
+
 }
