@@ -1,30 +1,30 @@
 * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    flex-wrap: wrap;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	flex-wrap: wrap;
 }
 
 body {
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    font-family: 'Lobster';
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	font-family: 'Lobster';
 }
 
 .row {
 	width: 100%;
 	display: flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 
 .canvas {
-	width: 505px ;
-	margin-left: calc((100% - 505px)/2) ;
-	margin-right: calc((100% - 505px)/2) ;
-
+	width: 505px;
+	margin-left: calc((100% - 505px)/2);
+	margin-right: calc((100% - 505px)/2);
 }
+
 .col-12 {
 	width: 100%;
 }
@@ -34,7 +34,7 @@ body {
 }
 
 .col-8 {
-  width: 66.6%;
+	width: 66.6%;
 }
 
 .col-6 {
@@ -42,7 +42,7 @@ body {
 }
 
 .col-4 {
-  width: 33.3%;
+	width: 33.3%;
 }
 
 .col-2 {
@@ -55,7 +55,7 @@ body {
 }
 
 #scoring {
-	text-align:center;
+	text-align: center;
 	white-space: pre;
 	font-size: 26px;
 	font-style: italic;
@@ -69,19 +69,19 @@ body {
 .p1 {
 	font-size: 30px;
 	font-weight: 300;
-	margin-top : 20px;
+	margin-top: 20px;
 	margin-left: 25%;
 	width: 25%;
 }
 
 .select {
-   height: 35px;
-   font-size: 26px;
-   width: 30%;
-   float: left;
-   margin-top: 20px;
-   margin-right: 20%;
- }
+	height: 35px;
+	font-size: 26px;
+	width: 30%;
+	float: left;
+	margin-top: 20px;
+	margin-right: 20%;
+}
 
 #speed {
 	font-size: 20px;
