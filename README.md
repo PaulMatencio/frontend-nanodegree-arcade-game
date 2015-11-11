@@ -41,7 +41,7 @@ BUGS
 
 CURRENT ISSUES
 
-When the player use the arrow keys to move, the <select> element is also changed which of course change the speed of the bugs. Need to find a solution to discouple the <select> element from the arrows key
+When the player use the arrow keys to move, the select element is also changed which of course change the speed of the bugs. Need to find a solution to discouple the select element from the arrows key
 
 
 
