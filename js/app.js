@@ -56,6 +56,25 @@ function scoring() {
         string3.replace("%data", game.level_score.toString());
 }
 
+function getSpeedValue() {
+    var e = document.querySelector("#speed");
+    return e.options[e.selectedIndex].value;
+}
+
+/*
+function change() {
+    var freelane = game.freeLanes.length; 
+    game.allEnemies.forEach(
+        function(enemy) {
+        if (enemy.exist) {
+            // console.log(enemy.speed);
+            Resources.speed = getSpeedValue();
+            enemy.changeSpeed(Resources.speed);
+        }
+    },game);   
+}
+*/
+
 var images = {} // images Object  (or hashmap)
 images['s'] = 'images/stone-block.png';
 images['w'] = 'images/water-block.png';
@@ -101,12 +120,14 @@ var allPlaygrounds = [];
 var Score_level1 = 300; // Level total score
 var levelScore = [];
 
-// three levels
+// three levels ( )
 for (var i = 0, len = playLayouts.length; i < len; i++) {
     var playground = new Playground(playLayouts[i], Math.floor(Resources.canvas.width / 101)); //this for loop creates enemies and fill up the allEnemies Object.
     this.allPlaygrounds.push(playground);
     this.levelScore.push(Score_level1 * (i + 1)); // level 1 playgound= 300, level 2 playground= 600 , level 3 playground = 900
 }
+
+Resources.speed = getSpeedValue();
 
 game = new Game();
 
@@ -122,3 +143,17 @@ document.addEventListener('keyup', function(e) {
     };
     game.player.handleInput(allowedKeys[e.keyCode]);
 });
+
+document.querySelector("#speed").onchange = function() {
+    var freelane = game.freeLanes.length; 
+    game.allEnemies.forEach(
+        function(enemy) {
+        if (enemy.exist) {
+            Resources.speed = getSpeedValue();
+            // this.options[this.selectedIndex].value;
+            enemy.changeSpeed(Resources.speed);
+        }
+    },game);  
+}
+
+

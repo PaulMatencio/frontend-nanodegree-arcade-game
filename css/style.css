@@ -29,6 +29,26 @@ body {
 	width: 100%;
 }
 
+.col-10 {
+	width: 83.3%;
+} 
+
+.col-8 {
+  width: 66.6%;
+} 
+
+.col-6 {
+	width: 50%;
+}
+
+.col-4 {
+  width: 33.3%;
+} 
+
+.col-2 {
+	width: calc(16.6%);
+} 
+
 .menu {
 	margin: 0;
 }
@@ -39,4 +59,34 @@ body {
 	font-size: 26px;
 	font-style: italic;
 	margin: 1vh 5vw 1vh 0;
+}
+
+.left {
+	float: left;
+}
+
+.p1 {
+	font-size: 30px;
+	font-weight: 300;
+	margin-top : 20px;
+	margin-left: 25%;
+	width: 25%;
+}
+
+.select {
+   height: 35px;
+   font-size: 26px;
+   width: 30%;
+   overflow: hidden;
+   float: left;
+   margin-top: 20px;
+   margin-right: 20%;
+   background: no-reepeat right #ddd;
+  
+ }
+
+#speed {
+	font-size: 20px;
+	border: 2px solid;
+	border-radius: 20px;
 }

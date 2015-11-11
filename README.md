@@ -19,6 +19,8 @@ It should be noted that Star(s) will appear only at the third level.
 -A few Rocks will replace stones at level 2 and 3.
 -Rocks are obtacle for the player. Player can't cross rock.
 
+- The player can select the speed of the bugs ( very slow, slow, medium, fast and very fast)
+
 WIN:
 -When a player gets 900 points, he wins the game then
 
@@ -37,9 +39,10 @@ BUGS
 
 
 
-Not yet implemented :
+CURRENT ISSUES
 
-- The player can select the speed of the bugs ( very slow, slow, medium, fast and very fast)
+When the player use the arrow keys to move, the <select> element is also changed which of course change the speed of the bugs. Need to find a solution to discouple the <select> element from the arrows key
+
 
 
 For this project, I was inspired by:

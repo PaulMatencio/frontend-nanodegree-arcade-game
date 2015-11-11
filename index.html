@@ -1,27 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <link href="css/style.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <title>Bug invasion</title>
-  </head>
-  <body>
-    <header class="row">
-      <h1 class="col-12"> Bug invasion </h1>
-    </header>
-    <main class= "row">
-      <menu class="col-12 menu">
-        <p id="scoring"><span> </span></p>
-      </menu>
-      <canvas id="canvas" class="canvas" width="505" height="707"> </canvas>
-    </main>
-    <footer> </footer>
-    <script src="js/resources.js"></script>
-    <script src="js/entities.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
-  </body>
+</head>
+<body>
+  <header class="row">
+    <p class="p1"> Bug invasion </p>
+    <div class="select"> Speed
+       <select id="speed">
+         <option value="50">very slow</option>
+         <option value="25">slow</option>
+         <option value="12" selected="selected">medium</option>
+         <option value="6">fast</option>
+         <option value="3">very fast</option>
+       </select>
+    </div>
+  </header> 
+  <main class= "row">
+     <div class="col-12 menu">
+      <p id="scoring"> </p>
+     </div> 
+     <canvas id="canvas" class="canvas" width="505" height="707"> </canvas>  
+  </main>
+  <footer> </footer>
+  <script src="js/resources.js"></script>
+  <script src="js/entities.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/engine.js"></script>
+</body>
 </html>

@@ -21,8 +21,16 @@ function Enemy(sprite) { //Enemy constructor function. Inherit basic
     Element.call(this, sprite); //properties from Element  and create a random speed
     this.scale = 0.8;
     var freelane = game.freeLanes.length;
-    this.speed = (Math.floor(Math.random() * 8 * freelane) + freelane + 1) / 15;
+    this.speed = (Math.floor(Math.random() * 8 * freelane) + freelane + 1) / Resources.speed;
+
 }
+
+
+Enemy.prototype.changeSpeed = function changeSpeed(speed) {
+    var freelane = game.freeLanes.length; 
+    this.speed = (Math.floor(Math.random() * 8 * freelane) + freelane + 1) / speed;
+}
+
 
 Enemy.prototype.update = function update(dt) { //moves enemy across the playground and re-spawns it
     this.position[0] += this.speed * dt; //when it reaches the end of the playground
