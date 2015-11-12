@@ -45,35 +45,24 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// write the score on top of the canvas
 function scoring() {
     var string1 = "My score : %data";
     var string2 = "Game level : %data";
+    var string5 = "Speed: %data";
     var string3 = "Level score: %data";
     var string4 = "My lifes: %data";
+    var speed = allSpeed[Resources.speed.toString()];
     document.querySelector("#scoring").innerHTML = string1.replace("%data", game.player.score.toString()) + "   " +
         string4.replace("%data", game.player.lives.toString()) + "   " +
         string2.replace("%data", game.level.toString()) + "   " +
+        string5.replace("%data", speed) + "   " +
         string3.replace("%data", game.level_score.toString());
 }
 
-function getSpeedValue() {
-    var e = document.querySelector("#speed");
-    return e.options[e.selectedIndex].value;
+function getSpeedValue(buttonId) {
+    return document.querySelector(buttonId).value;
 }
-
-/*
-function change() {
-    var freelane = game.freeLanes.length;
-    game.allEnemies.forEach(
-        function(enemy) {
-        if (enemy.exist) {
-            // console.log(enemy.speed);
-            Resources.speed = getSpeedValue();
-            enemy.changeSpeed(Resources.speed);
-        }
-    },game);
-}
-*/
 
 var images = {} // images Object  (or hashmap)
 images['s'] = 'images/stone-block.png';
@@ -86,6 +75,7 @@ images["player"] = 'images/char-boy.png';
 images["bug"] = 'images/enemy-bug.png';
 images["princess"] = 'images/char-princess-girl.png';
 
+// the three layouts of the game 
 var playLayouts = [ // Playout Arrays. Each Array element is an array
     ['w', 'w', 'w', 'k', 'w', //  Level 1   playground layout
         's', 's', 's', 's', 's', // w : water
@@ -117,18 +107,27 @@ var playLayouts = [ // Playout Arrays. Each Array element is an array
 ];
 
 var allPlaygrounds = [];
-var Score_level1 = 300; // Level total score
-var levelScore = [];
+
+var levelScore = [300, 600, 900]; // the three score levels
+
+// this hash map is used to convert the speed value to speed label
+var allSpeed = {};
+allSpeed["12"] = "medium";
+allSpeed["7"] = "fast";
+allSpeed["5"] = "fast++";
+allSpeed["18"] = "slow";
+allSpeed["30"] = "slow--";
 
 // three levels ( )
 for (var i = 0, len = playLayouts.length; i < len; i++) {
     var playground = new Playground(playLayouts[i], Math.floor(Resources.canvas.width / 101)); //this for loop creates enemies and fill up the allEnemies Object.
     this.allPlaygrounds.push(playground);
-    this.levelScore.push(Score_level1 * (i + 1)); // level 1 playgound= 300, level 2 playground= 600 , level 3 playground = 900
+    //this.levelScore.push(Score_level1 * (i + 1)); 
 }
 
-Resources.speed = getSpeedValue();
-
+// When the game is loaeder, the initial speed of the bug is medium
+// Resources.speed = getSpeedValue("#medium");
+Resources.speed = document.querySelector("#medium").value;
 game = new Game();
 
 // This listens for key presses and sends the keys to your
@@ -144,30 +143,24 @@ document.addEventListener('keyup', function(e) {
     game.player.handleInput(allowedKeys[e.keyCode]);
 });
 
-/*
-document.querySelector("#speed").onchange = function() {
-    var freelane = game.freeLanes.length;
-    game.allEnemies.forEach(
-        function(enemy) {
-        if (enemy.exist) {
-            Resources.speed = getSpeedValue();
-            // this.options[this.selectedIndex].value;
-            enemy.changeSpeed(Resources.speed);
-        }
-    },game);
-}
-*/
-document.querySelector("#change").onclick = function() {
-    var freelane = game.freeLanes.length;
-    game.allEnemies.forEach(
-        function(enemy) {
-        if (enemy.exist) {
-            Resources.speed = getSpeedValue();
-            // this.options[this.selectedIndex].value;
-            enemy.changeSpeed(Resources.speed);
-        }
-    },game);
+// Buttons to change the speed of the BUGS
+
+function speedButton(buttonId) {
+    var obj = document.querySelector(buttonId);
+    obj.onclick = function() {
+        // obj.classList.toggle('active');
+        game.allEnemies.forEach(
+            function(enemy) { // Recalculate the speed of each ladybug if it exists
+                if (enemy.exist) {
+                    Resources.speed = obj.value; // new value to use the the speed calcuation
+                    enemy.changeSpeed(Resources.speed); // call the ChangeSpeed method 
+                }
+            }, game);
+    }
 }
 
-
-
+speedButton("#vslow");
+speedButton("#slow");
+speedButton("#medium");
+speedButton("#fast");
+speedButton("#vfast");

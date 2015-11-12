@@ -3,46 +3,66 @@ frontend-nanodegree-arcade-game
 
 loading the index.html will start the game immediately.
 
-Use arrows to move the player(boy) around grass and stone tiles.
+Use arrows to move the player(BOY) around GRASS , STONE and ROCKS tiles.
 
-Goal:
+The GAME
 
-The goal is to reach the water or the Key or a Star on the other side of the playground without hitting the bugs. The game has three level. Stars will appear after the  level 2. The player has 3 lives before the game restart and load the  first level.
-The player wins when he completed the level 3 : bugs will disappear and princess will appear over the key. The player is left where he is. The objective for the player is to be as close as possible to the princess. When all bugs are gone, the player can move closer to the princess.
+1) Player can select the speed of the BUGS ( very low to very fast)
+2) The goal is reach the score of at least 900 points. When  the player reaches the WATER, he gains 50 points.  The KEY (water side)  will give him 150 points and a STAR (water side) 100 points. 
+3) When he wins, a bonus (PRINCESS) will appear over the last KEY and all the BUGS will disappear.
+4) If the player is hit by a BUG, he will loose 100 points and one of his 3 lifes. 
+5) When the player lose all his 3 life's or his score is below 0, he lose the game and the game is reloaded
 
-Player:
+6) The game has three levels.
+7) The level 1 and 2 have 7 rows ( 2 grasses, 4 stones and 1 water ). The level 3 has 8 rows.
 
--If the player reachs the water at the other side, he will collect 50 point. He can collect 150 poinst if he reaches the key and 100 points if he reaches a Star.
-It should be noted that Star(s) will appear only at the third level.
--When the player is  hit by a bug (collision), he loses 100 points and one life.
--When the player gets 300 points, he goes to the next level of the game( i.e level+1)
--A few Rocks will replace stones at level 2 and 3.
--Rocks are obtacle for the player. Player can't cross rock.
+7) A KEY and STARS can replace WATER on the water side. ROCKS can replace STONES on stones lanes.
 
-- The player can select the speed of the bugs ( very slow, slow, medium, fast and very fast)
-
-WIN:
--When a player gets 900 points, he wins the game then
-
-	1) A princess will be placed over the key and the player where he was left. The objective of the player is to be as close as possible to the princess.
-	2) All the bugs are gone
+Every time the player reaches the WATER, the KEY or STAR, he gains the corresponding points and moves to its original position to continue the game. The Game is reloaded when the player life reach 0 or his score is below 0. The player is moved to its original position for a new game
 
 
-BUGS
+Points
 
--The number of bugs = 5  +  game level
--The bugs will initailly be placed one per each lane. When all free lanes are occupied, the next selected free lane will start with the first lane.
--The bugs run on freelanes and their speed will depend on the number of free lanes.
--When a bug goes beyond its primary lane, it will goes to the next lane.
--When it goes beyond the last free lane, it will start on a random lane number (1: freelane)
--The bugs can cross the rock.
+-WATER					-> 	+50 points 
+-STAR 					-> 	+100 points
+-KEY 					-> 	+150 points
+-Hits by a BUG			->	-100 points and 1 life
+
+Scores
+
+-300 points    			 -> level 2
+-600 points  			  -> level 3
+-900 points    			 -> Win a princess        
 
 
 
-CURRENT ISSUES
 
-When the player use the arrow keys to move, the (select) element is also changed which then changes the speed of the bugs. Due to this (select) and (arrow keys) behaviour, in order to change the speed of the bugs, the player must first select the speed using the Select element  the click on the change speed button.
+The PLAYER:
+
+1) The PLAYER can select the speed of the BUGS ( very slow, slow, medium, fast and very fast). 
+2) BUGS move at different speeds.
+3) The PLAYER has 3 lifes.
+4) The PLAYER win when he completed the level 3 of the game
+5) When the PLAYER wins, all the BUGS will disappear and a PRINCESS will appear over the last position of KEY.  
+6) When the PLAYER is  hit by a BUG (collision), he loses 100 points and one life.
+7) When the PLAYER reach the WATER, KEY or STAR, he gains cooresponding points and moves to its original position
+8) When the PLAYER gain  300 or more points, he goes to the next level of the game( i.e level+1)
+9) The Player can't cross rock.
+
+
+
+The BUGS
+
+-The initial number of BUGS is 5  plus the game level.
+-The BUGS  move at different speed
+-When the game is loaded or reloaded, the BUGS are orderly placed starting with FREELANE one.
+-When a BUG crosses a FREELANE, it moves to the next one. When she crosses the last FREELANE, she is re-placed on a LANE randomly chosen
+-The BUGS can cross any rock.
 
 
 For this project, I was inspired by:
 http://devrob.github.io/Udacity-WebDev-project3
+
+
+
+

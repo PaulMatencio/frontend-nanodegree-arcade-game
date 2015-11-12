@@ -1,33 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <link href="css/style.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <title>Bug invasion</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <link href="css/style.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <title>Ladybug invasion</title>
 </head>
+
 <body>
   <header class="row">
-    <p class="p1"> Bug invasion </p>
-    <p class="select"> Speed selection
-       <select id="speed" required>
-         <option value="50">very slow</option>
-         <option value="25">slow</option>
-         <option value="12" selected="selected">medium</option>
-         <option value="6">fast</option>
-         <option value="3">very fast</option>
-       </select>
-
-    <button id="change">Change speed</button>
-
+    <div class="col-5">
+      <p class="p1"> Ladybug invasion</p>
+    </div>
+    <div class="col-m-7">
+      <button id="vslow" class="speed" value=30>slow--</button>
+      <button id="slow" class="speed" value=18>slow</button>
+      <button id="medium" class="speed" value=12>medium</button>
+      <button id="fast" class="speed" value=7>fast</button>
+      <button id="vfast" class="speed" value=5>fast++</button>
+    </div>
   </header>
-  <main class= "row">
-     <div class="menu">
+  <main class="row">
+    <div class="text">
       <p id="scoring"> </p>
-     </div>
-     <canvas id="canvas" class="canvas" width="505" height="707"> </canvas>
+    </div>
+    <canvas id="canvas" class="canvas" width="505" height="707"> </canvas>
   </main>
   <footer> </footer>
   <script src="js/resources.js"></script>
@@ -36,3 +35,4 @@
   <script src="js/engine.js"></script>
 </body>
 </html>
+
